@@ -1,8 +1,9 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import React, {Component} from 'react';
-import List from './list';
+import List from './list/index';
 import AddItem from './add_item';
 import axios from 'axios';
+
 
 
 
@@ -16,7 +17,7 @@ class App extends Component{
         };
 
         this.base_url = 'http://api.reactprototypes.com';
-        this.api_key = '?key=c518demouser';
+        this.api_key = '?key=blabbermouth';
     }
 
     componentDidMount(){

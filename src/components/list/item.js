@@ -3,9 +3,13 @@ import React from 'react';
 
 
 export default props =>{
+
+    console.log('Props:', props);
+
+
     return (
-        <li className="collection-item row">
-            <div className="col s10">
+        <li className="collection-item row to-do-item">
+            <div className={`col s10 ${props.complete ? 'complete' : ''}`}>
                 {props.title}
 
             </div>
