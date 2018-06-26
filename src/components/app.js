@@ -28,11 +28,15 @@ class App extends Component{
 
         try{
             const resp = await axios.post(`${this.base_url}/todos${this.api_key}`, item);
-            console.log('Add response:', resp);
             this.getListData();
         } catch (err){
-            console.log('Error adding item:', err.response.data.error);
         }
+    }
+
+    async deleteItem(id){
+        const resp = await axios.delete(`${this.base_url}/todos/${id}${this.api_key}`);
+
+        this.getListData();
     }
 
     async getListData(){
@@ -56,22 +60,16 @@ class App extends Component{
             });
 
         } catch(err){
-            console.log('GetData Error:', err.message);
         }
-
     }
 
 
-
-
     render(){
-        console.log('APP:', this.state);
-
         return(
             <div className="container">
                 <h1 className="center">To Do List</h1>
                 <AddItem add={this.addItem.bind(this)}/>
-                <List data={this.state.list}/>
+                <List data={this.state.list} delete={this.deleteItem.bind(this)}/>
             </div>
         );
     }
